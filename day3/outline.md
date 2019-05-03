@@ -114,7 +114,27 @@ void tarjan(int x) {
 ##### 最近公共祖先
 
 #### 匈牙利算法
+```cpp
+bool dfs(int x) {
+    int i, y;
+    for (i = head[x]; i; i = next[i])
+        if (!v[y = ver[i]]) {
+            v[y] = 1;
+            if (!fa[y] || dfs(fa[y])) {
+                fa[y] = x;
+                return 1;
+            }
+        }
+    return 0;
+}
 
+int main() {
+    for (int i = 1; i <= n; i++) {
+        memset(v, 0, sizeof(v));
+        if (dfs(i)) ans++;
+    }
+}
+```
 ##### 二分图/二部图
 
 ###### 判定是否为二分图
@@ -122,3 +142,11 @@ void tarjan(int x) {
 ###### 最小覆盖
 
 ###### 最大匹配
+
+###### 最大独立集
+
+###### 最小路径覆盖
+
+###### 最优匹配
+
+###### 稳定婚姻问题
